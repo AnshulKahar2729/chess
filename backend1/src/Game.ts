@@ -36,10 +36,10 @@ export class Game {
     }
   ) {
     //  to make sure that the move is made by the correct player
-    if (this.board.moves.length % 2 === 0 && socket !== this.player1) {
+    if (this.board.moveNumber() % 2 === 0 && socket !== this.player1) {
       return;
     }
-    if (this.board.moves.length % 2 === 1 && socket !== this.player2) {
+    if (this.board.moveNumber() % 2 === 1 && socket !== this.player2) {
       return;
     }
 
@@ -69,7 +69,7 @@ export class Game {
     }
 
     // tell the other player the move has been made
-    if (this.board.moves.length % 2 === 0) {
+    if (this.board.moveNumber() % 2 === 0) {
       this.player2.send(
         JSON.stringify({
           type: MOVE,
